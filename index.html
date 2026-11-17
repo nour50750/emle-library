@@ -11398,9 +11398,71 @@ function syncAdminCopyAccess() {
 
 
 
+
+<style id="nour-rahma-dedication-styles">
+  :root { --topbar-h: 86px; }
+  .topbar { top: 32px; }
+  .dedication-ribbon { position:fixed; inset:0 0 auto; height:32px; z-index:1101;
+    overflow:hidden; background:#fff1f3; color:#9f2443; border-bottom:1px solid #f7d6de;
+    font:600 13px/32px "Segoe UI",Tahoma,sans-serif; }
+  .dedication-track { display:flex; width:max-content; direction:ltr;
+    animation:dedication-drift 40s linear infinite; }
+  .dedication-group { flex:none; min-width:100vw; display:flex; justify-content:space-around; gap:80px; padding:0 40px; }
+  .dedication-group span { white-space:nowrap; direction:rtl; }
+  @keyframes dedication-drift { to { transform:translateX(-50%); } }
+  .dedication-welcome[hidden] { display:none !important; }
+  .dedication-welcome { position:fixed; inset:0; z-index:100000; overflow:hidden;
+    display:grid; place-items:center; background:rgba(255,247,249,.96); padding:24px;
+    font-family:"Segoe UI",Tahoma,sans-serif; }
+  .dedication-card { position:relative; z-index:2; text-align:center; direction:rtl;
+    max-width:560px; width:100%; padding:40px 24px; border:1px solid #f7d3dd;
+    border-radius:28px; background:#fffafc; box-shadow:0 20px 70px #be345620; }
+  .dedication-card h1 { margin:16px 0; color:#922443; font-size:clamp(24px,6vw,36px); line-height:1.7; }
+  .dedication-card p { color:#9c5b70; margin:0; font-size:14px; }
+  .dedication-heart { position:absolute; top:-15vh; left:var(--x); color:#e2264d;
+    font-size:var(--size); pointer-events:none; user-select:none;
+    animation:dedication-fall var(--duration) var(--delay) linear forwards; }
+  @keyframes dedication-fall { from { transform:translate3d(0,-5vh,0) rotate(-15deg); opacity:0; }
+    12% { opacity:.9; } to { transform:translate3d(35px,125vh,0) rotate(25deg); opacity:.2; } }
+  @media (prefers-reduced-motion:reduce) {
+    .dedication-track { animation:none; }
+    .dedication-group[aria-hidden="true"] { display:none; }
+    .dedication-heart { animation:none; top:var(--y); opacity:.35; }
+  }
+</style>
+
 </head>
 
 <body>
+
+<div class="dedication-ribbon" role="region" aria-label="من نور إلى رحمه حبيبتي">
+  <div class="dedication-track" aria-hidden="true">
+    <div class="dedication-group"><span>من نور إلى رحمه حبيبتي ❤️</span><span>من نور إلى رحمه حبيبتي ❤️</span></div>
+    <div class="dedication-group" aria-hidden="true"><span>من نور إلى رحمه حبيبتي ❤️</span><span>من نور إلى رحمه حبيبتي ❤️</span></div>
+  </div>
+</div>
+<div class="dedication-welcome" id="rahmaWelcome" role="status" aria-live="polite" hidden>
+  <div class="dedication-card"><div style="font-size:48px" aria-hidden="true">❤️</div>
+    <h1>إهداء إلى حبيب عمري رحمومتي ❤️</h1><p>بكل الحب، من نور</p>
+  </div>
+</div>
+<script>
+(function () {
+  var overlay = document.getElementById('rahmaWelcome');
+  var key = 'emle_rahma_dedication_seen_v1';
+  try { if (localStorage.getItem(key) === '1') return; localStorage.setItem(key, '1'); }
+  catch (error) { try { if (sessionStorage.getItem(key) === '1') return; sessionStorage.setItem(key, '1'); } catch (_) {} }
+  overlay.hidden = false;
+  for (var i = 0; i < 24; i++) {
+    var heart = document.createElement('span');
+    heart.className = 'dedication-heart'; heart.textContent = '♥'; heart.setAttribute('aria-hidden','true');
+    heart.style.cssText = '--x:' + ((i * 37) % 100) + '%;--y:' + ((i * 23) % 100) + '%;--size:' + (18 + (i % 5) * 7) + 'px;--duration:' + (3.1 + (i % 4) * .2) + 's;--delay:' + ((i % 8) * .15) + 's';
+    overlay.appendChild(heart);
+  }
+  setTimeout(function () { overlay.remove(); }, 5000);
+})();
+</script>
+
 
 
 
@@ -11641,35 +11703,7 @@ function syncAdminCopyAccess() {
 
     <!-- SUBSCRIBER HONOR BANNER (COMPACT & COMPLETE) -->
 
-      <div class="global-honor-banner" dir="rtl" style="background:linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border:1px solid #86efac; border-right:4px solid #059669; border-radius:10px; padding:10px 16px; margin-bottom:16px; box-shadow:0 1px 4px rgba(5,150,105,0.05); color:#065f46; text-align:right; font-size:13px; line-height:1.7;">
-
-        <div>
-
-          <strong style="color:#047857; font-size:13.8px;">✨ أنت الآن في النسخة الكاملة لمنصة EMLE in a Nutshell</strong>
-
-          <span style="color:#b91c1c; font-weight:700; margin-right:6px;">— ⚠️ فضلًا لا تقم بإرسال هذا الرابط لأحد، فهذه أمانة.</span>
-
-        </div>
-
-        <div style="margin-top:3px; color:#047857; font-size:12.5px;">
-
-          <span>لو مش مشترك، تقدر تشترك بمبلغ رمزي جداً (<strong>60ج فقط</strong>) عبر قناة التليجرام: 
-
-            <a href="https://t.me/EMLEinNutshell" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700; text-decoration:underline; direction:ltr; display:inline-block;">https://t.me/EMLEinNutshell</a>
-
-          </span>
-
-          <span style="margin:0 6px; opacity:0.4;">|</span>
-
-          <span>أو تواصل معنا هنا: 
-
-            <a href="https://t.me/EMLE_inNutshell_Contact" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700; text-decoration:underline; direction:ltr; display:inline-block;">https://t.me/EMLE_inNutshell_Contact</a>
-
-          </span>
-
-        </div>
-
-      </div>
+      
 
 
 
@@ -11712,52 +11746,7 @@ function syncAdminCopyAccess() {
       <!-- 📢 TOP DASHBOARD UPDATE BANNER (13 نوفمبر 2026) -->
 
             <!-- 📚 PINNED VIP COMPLETE BOOK BANNER -->
-      <div class="dashboard-book-banner" id="dashBookBanner" dir="rtl">
-        <div class="dbb-header">
-          <div style="display:flex; align-items:center; gap:8px;">
-            <span class="dbb-badge">📚 حصرياً لمشتركي المنصة</span>
-            <span class="dbb-price-badge">20 ج فقط</span>
-          </div>
-          <span class="dbb-tag">📖 Complete VIP Reference Book (PDF)</span>
-        </div>
-
-        <h3 class="dbb-title">بناء على طلبكم، تم عمل كتاب مجمع للـ Notes كلها في 150 صفحة فقط! ✨</h3>
-        <p class="dbb-sub">جميع الـ 18 شابتر مجمعة ومنسقة بالكامل مع تصنيف الـ Topics وإحصائيات تكرار الامتحانات حتى يوليو 2026.</p>
-
-        <div class="dbb-steps-box">
-          <div class="dbb-step">
-            <span class="dbb-step-num">1️⃣</span>
-            <div class="dbb-step-text">
-              <strong>التحويل على الحساب التالي (20 جنيه فقط):</strong><br>
-              <a href="https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb" target="_blank" class="dbb-link">
-                ▫️ https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb
-              </a>
-            </div>
-          </div>
-
-          <div class="dbb-step">
-            <span class="dbb-step-num">2️⃣</span>
-            <div class="dbb-step-text">
-              <strong>بعدها ابعت سكرين شوت بالتحويل للأكونت ده لاستلام نسختك فوراً:</strong><br>
-              <a href="https://t.me/EMLE_inNutshell_Contact" target="_blank" class="dbb-link">
-                ▫️ https://t.me/EMLE_inNutshell_Contact
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="dbb-actions">
-          <a href="https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb" target="_blank" class="btn-teal dbb-btn">
-            💳 الدفع عبر InstaPay (20 ج)
-          </a>
-          <a href="https://t.me/EMLE_inNutshell_Contact" target="_blank" class="btn-outline dbb-btn" style="border-color:#0284c7; color:#0284c7;">
-            📲 إرسال الإيصال واستلام الكتاب
-          </a>
-          <button type="button" class="subtle-link-btn" onclick="openUpdateAnnouncementModal()" style="font-size:12.5px; margin-right:auto;">
-            تفاصيل وخطة المذاكرة السريعة للكتاب &larr;
-          </button>
-        </div>
-      </div>
+      
 <div class="dashboard-update-banner" id="dashUpdateBanner" dir="rtl">
 
         <div class="dub-header-row">
@@ -11778,7 +11767,7 @@ function syncAdminCopyAccess() {
 
         <div class="dub-main-text">
 
-          تمت مراجعة جميع أسئلة المنصة مع ملف د. أحمد عامر التفاعلي (آخر نسخة) ومع تعديلات التليجرام الأخيرة، جميع الأسئلة الآن إجابتها مطابقة <strong>100%</strong> بإذن الله لإجابات د. أحمد عامر. <a href="javascript:void(0)" onclick="openUpdateAnnouncementModal()" style="color: #059669; font-weight: 800; text-decoration: underline; margin-right: 6px;">[استعراض ملخص التحديثات الجديدة 🚀]</a>
+          تمت مراجعة جميع أسئلة المنصة مع ملف د. أحمد عامر التفاعلي (آخر نسخة) ومع تعديلات التليجرام الأخيرة، جميع الأسئلة الآن إجابتها مطابقة <strong>100%</strong> بإذن الله لإجابات د. أحمد عامر. 
 
         </div>
 
@@ -13249,97 +13238,7 @@ function syncAdminCopyAccess() {
 </div>
 
 <!-- ================= UPDATE ANNOUNCEMENT MODAL (FIRST TIME SEEN) ================= -->
-<div class="modal-backdrop" id="updateAnnouncementModal" onclick="if(event.target===this) dismissUpdateAnnouncement()">
-  <div class="modal-box update-announcement-box" dir="rtl">
-    <div class="uam-header" style="text-align:right;">
-      <div class="uam-badge-group">
-        <span class="uam-badge" style="background:linear-gradient(135deg, #0a6c74 0%, #0d9488 100%);">📚 إصدار كتاب الـ VIP Notes</span>
-        <span class="uam-date" style="color:var(--teal); font-weight:800;">16 نوفمبر 2026</span>
-      </div>
-      <h2 class="uam-title" style="font-size:18px; color:var(--text); line-height:1.4; margin:8px 0 6px 0;">
-        بناءً على طلبكم، تم عمل كتاب مجمع للـ Notes كلها في ملف واحد PDF! 📖✨
-      </h2>
-      <p class="uam-subtitle" style="margin:0; font-size:13px; color:var(--text-secondary); line-height:1.6;">
-        تم جمع كافة النوتس والمفاتيح السريرية الـ 18 شابتر في ملف PDF واحد منسق بجودة عالية للدراسة والمراجعة السريعة:
-      </p>
-    </div>
 
-    <!-- Book Details Box -->
-    <div style="background:var(--surface-subtle); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:16px; text-align:right;">
-      <div style="font-size:15px; font-weight:900; color:#dc2626; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
-        <span>🔴</span>
-        <span>الكتاب يشمل كل الـ 18 شابتر في 150 صفحة فقط!</span>
-      </div>
-
-      <div style="font-size:13.5px; color:var(--text); line-height:1.8; margin-bottom:14px;">
-        <div style="margin-bottom:8px; display:flex; align-items:flex-start; gap:8px;">
-          <span style="color:#0a6c74; font-weight:800; font-size:15px;">▫️</span>
-          <div><strong>النوتس بتغطي كل أفكار أسئلة السنين السابقة</strong> لغاية آخر امتحان (دور يوليو 2026) مجمعة ومقسمة لمواد ثم لشباتر ثم لـ Topics.</div>
-        </div>
-        <div style="display:flex; align-items:flex-start; gap:8px;">
-          <span style="color:#0a6c74; font-weight:800; font-size:15px;">▫️</span>
-          <div><strong>موضح جنب كل موضوع عدد مرات تكراره في الامتحانات</strong> بحيث لو مش لاحق وعاوز تقرأ المواضيع الـ Highyield فقط.</div>
-        </div>
-      </div>
-
-      <!-- Schedule Box -->
-      <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:12px 14px; font-size:13px; color:#92400e; line-height:1.75;">
-        <div style="font-weight:800; margin-bottom:4px; display:flex; align-items:center; gap:6px;">
-          <span>💡</span> <span>خطة الإنجاز السريع:</span>
-        </div>
-        <div>• يعني لو كل يوم هتذاكر <strong>20 صفحة فقط</strong>، هتخلص الكتاب قبل الامتحان الفعلي.</div>
-        <div>• ولو كل يوم هتذاكر <strong>30 صفحة</strong> هتخلصه قبل بداية الامتحانات المحاكاة / التحريبي.</div>
-      </div>
-    </div>
-
-    <!-- Pricing & Payment Box -->
-    <div style="background:linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border:1.5px solid #10b981; border-radius:10px; padding:16px; margin-bottom:18px; text-align:right;">
-      <div style="font-size:15px; font-weight:900; color:#15803d; margin-bottom:12px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
-        <span style="display:flex; align-items:center; gap:6px;">
-          <span>🔴</span> <span>الكتاب سعره 20ج فقط لمشتركي المنصة</span>
-        </span>
-        <span style="font-size:11px; background:#dcfce7; color:#166534; font-weight:800; padding:2px 8px; border-radius:6px; border:1px solid #bbf7d0;">حصرياً</span>
-      </div>
-
-      <div style="display:flex; flex-direction:column; gap:10px; font-size:13px; color:#14532d; line-height:1.6;">
-        <div style="display:flex; align-items:flex-start; gap:8px;">
-          <span style="font-size:16px; flex-shrink:0;">1️⃣</span>
-          <div>
-            <strong>التحويل على الحساب التالي:</strong><br>
-            <a href="https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb" target="_blank" style="color:#059669; font-weight:800; text-decoration:underline; word-break:break-all; display:inline-block; margin-top:2px;">
-              ▫️ https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb
-            </a>
-          </div>
-        </div>
-
-        <div style="display:flex; align-items:flex-start; gap:8px;">
-          <span style="font-size:16px; flex-shrink:0;">2️⃣</span>
-          <div>
-            <strong>بعدها ابعت سكرين شوت بالتحويل للأكونت ده:</strong><br>
-            <a href="https://t.me/EMLE_inNutshell_Contact" target="_blank" style="color:#0284c7; font-weight:800; text-decoration:underline; word-break:break-all; display:inline-block; margin-top:2px;">
-              ▫️ https://t.me/EMLE_inNutshell_Contact
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Actions -->
-    <div style="display:flex; flex-direction:column; gap:8px;">
-      <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <a href="https://ipn.eg/S/ahmedsakr0025/instapay/7iiKvb" target="_blank" class="btn-teal" style="flex:1; justify-content:center; text-decoration:none; padding:10px; font-size:13.5px;">
-          💳 الدفع عبر InstaPay (20 ج)
-        </a>
-        <a href="https://t.me/EMLE_inNutshell_Contact" target="_blank" class="btn-outline" style="flex:1; justify-content:center; text-decoration:none; padding:10px; font-size:13.5px; border-color:#0284c7; color:#0284c7;">
-          📲 إرسال الإيصال واستلام الكتاب
-        </a>
-      </div>
-      <button type="button" class="btn-outline" onclick="dismissUpdateAnnouncement()" style="justify-content:center; width:100%; padding:9px; font-size:13px;">
-        إغلاق ومتابعة المذاكرة على المنصة ✓
-      </button>
-    </div>
-  </div>
-</div>
 
 
 
@@ -18448,7 +18347,7 @@ function launchExamQuestionPool(pool, title, mode, emptyToast) {
 
   if (playable.length === 0) {
 
-    showToast(emptyToast || "🔒 أسئلة هذا الجزء متاحة في النسخة الكاملة للمنصة (تواصل معنا عبر التليجرام للاشتراك).");
+    showToast(emptyToast || "لا توجد أسئلة متاحة في هذا الجزء حاليًا.");
 
     return;
 
@@ -21998,7 +21897,7 @@ function syncTopbarHeight() {
 
   const rect = bar.getBoundingClientRect();
 
-  const h = Math.max(46, Math.ceil(rect.height || bar.offsetHeight || 54));
+  const h = Math.max(46, Math.ceil(rect.height || bar.offsetHeight || 54)) + 32;
 
   document.documentElement.style.setProperty("--topbar-h", h + "px");
 
