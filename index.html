@@ -11425,9 +11425,9 @@ function syncAdminCopyAccess() {
   @keyframes dedication-fall { from { transform:translate3d(0,-5vh,0) rotate(-15deg); opacity:0; }
     12% { opacity:.9; } to { transform:translate3d(35px,125vh,0) rotate(25deg); opacity:.2; } }
   @media (prefers-reduced-motion:reduce) {
-    .dedication-track { animation:none; }
-    .dedication-group[aria-hidden="true"] { display:none; }
-    .dedication-heart { animation:none; top:var(--y); opacity:.35; }
+    .dedication-track { animation-duration:80s; }
+    .dedication-heart { animation-duration:4s; }
+    .dedication-heart:nth-of-type(n+10) { display:none; }
   }
 </style>
 
