@@ -11737,6 +11737,14 @@ function syncAdminCopyAccess() {
 
             <!-- 📚 PINNED VIP COMPLETE BOOK BANNER -->
       
+
+<section id="legacyProgressImport" dir="rtl" aria-labelledby="legacyImportTitle" style="margin:0 0 22px;padding:18px;border:1px solid var(--teal-border);border-radius:14px;background:var(--teal-light);">
+  <h2 id="legacyImportTitle" style="margin:0 0 6px;font-size:18px;color:var(--teal)">معاك تقدم من الموقع القديم؟</h2>
+  <p style="margin:0 0 12px;color:var(--text-secondary)">ارفع ملف التقدم JSON الذي صدّرته من الموقع القديم لاستكمال حلّك هنا. يُحفظ على نفس المتصفح دون تسجيل دخول، والملف لا يُرفع إلى خادم.</p>
+  <button class="btn-teal" type="button" onclick="triggerImportProgress()" style="white-space:normal;min-height:44px">📂 استيراد تقدمي من الموقع القديم</button>
+  <p id="legacyImportStatus" role="status" aria-live="polite" style="margin:10px 0 0;font-weight:700;color:var(--teal)"></p>
+</section>
+
 <div class="dashboard-update-banner" id="dashUpdateBanner" dir="rtl">
 
         <div class="dub-header-row">
@@ -24174,7 +24182,11 @@ function handleImportProgressFile(event) {
       if (typeof renderStreakWidget === "function") {
         renderStreakWidget();
       }
-      showToast("✅ تم استعادة كافة التقدم والأسئلة بنجاح!");
+      const importedAnswers = Object.values(data.qStatus || {}).filter(q => q && typeof q.selected === "number" && q.status).length;
+      const importedTopics = Object.values(data.topicsRead || {}).filter(Boolean).length;
+      const importStatus = document.getElementById("legacyImportStatus");
+      if (importStatus) importStatus.textContent = "✅ تم استيراد التقدم وحفظه: " + importedAnswers + " إجابة و" + importedTopics + " موضوعًا مقروءًا.";
+      showToast("✅ تم استيراد التقدم وحفظه بنجاح!");
     } catch (err) {
       console.error("Backup import failed:", err);
       alert("تعذر قراءة ملف النسخة الاحتياطية. يرجى التأكد من اختيار ملف JSON صحيح.");
