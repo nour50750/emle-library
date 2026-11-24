@@ -223,7 +223,7 @@ function progress(stage) {
 
 async function loadVault(cachedFingerprint) {
   progress("fetch");
-  const res = await fetch("./data.enc");
+  const res = await fetch("./data.enc?v=20261124-ai-label1", { cache: "no-cache" });
   if (!res.ok) {
     throw new Error("Failed to fetch data.enc (" + res.status + ")");
   }
